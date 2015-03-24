@@ -28,13 +28,18 @@ public class ArrayReader {
 			e.printStackTrace();
 		}
 		
+		Integer dimension = null;
+		
 		while(line != null){
 			Vector<Integer> pVector = new Vector<Integer>();
 			arr.add(pVector);
 			
 			Scanner scanner = new Scanner(line);
-			while(scanner.hasNext())
+			while(scanner.hasNext() && (dimension == null || pVector.size() < dimension))
 				pVector.add(scanner.nextInt());
+			
+			if(dimension == null)
+				dimension = pVector.size();
 			
 			try {
 				line =  reader.readLine();
