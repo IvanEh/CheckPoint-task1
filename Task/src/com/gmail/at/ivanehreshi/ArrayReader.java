@@ -54,12 +54,21 @@ public class ArrayReader {
 		
 	}
 	
+	public static void genArray(Vector<Vector<Integer>> arr, int m, int n){
+		int c = 11;
+		for(int i = 0; i < m; i++){
+			arr.add(new Vector<Integer>());
+			for(int j = 0; j < n; j++){
+				arr.get(i).add(c);
+				c++;
+			}
+		}
+	}
+	
 	public static void main(String[] args){
 		Vector<Vector<Integer>> v = new Vector<Vector<Integer>>();
-		try {
-			readArray(v, new BufferedReader(new FileReader("input.txt")));
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
+		// readArray(v, new BufferedReader(new FileReader("input.txt")));
+		genArray(v, 1, 20);
+		ArrayShuffle.shuffleQuarter(v);
 	}
 }
