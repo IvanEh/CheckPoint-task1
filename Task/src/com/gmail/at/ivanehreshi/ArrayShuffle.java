@@ -9,6 +9,7 @@ public class ArrayShuffle {
 	
 
 	public static void shuffleQuarter(Vector<Vector<Integer>> arr){
+		int loop  = 0;
 		if(arr == null || arr.get(0).size() == 0)
 			return;
 		
@@ -48,8 +49,17 @@ public class ArrayShuffle {
 		}
 		
 		for(int i = 0; i < quarter; i++){
+			
 			boolean success = false;
+			
+			if(i == quarter - 1){
+				int downgrade = random.nextInt(quarter);
+				i = i - downgrade;
+				continue;
+			}
+			
 			while(!success){
+				loop++;
 				int randomIndex = i + random.nextInt(quarter - i) ;
 				if(shuffledIndices[randomIndex] != indicesToShuffle[i]){
 					success = true;
@@ -57,8 +67,10 @@ public class ArrayShuffle {
 					shuffledIndices[i] = shuffledIndices[randomIndex];
 					shuffledIndices[randomIndex] = t;
 				}
-				
+				if(loop > totalCount)
+					System.out.println("loop");
 			}
+			
 		}
 		
 	
