@@ -1,16 +1,9 @@
 package com.gmail.at.ivanehreshi;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.StringReader;
 import java.util.Scanner;
 import java.util.Vector;
-
-import org.json.JSONObject;
 
 public class ArrayReader {
 	
@@ -65,10 +58,5 @@ public class ArrayReader {
 		}
 	}
 	
-	public static void main(String[] args){
-		Vector<Vector<Integer>> v = new Vector<Vector<Integer>>();
-		// readArray(v, new BufferedReader(new FileReader("input.txt")));
-		genArray(v, 1, 20);
-		ArrayShuffle.shuffleQuarter(v);
-	}
+
 }

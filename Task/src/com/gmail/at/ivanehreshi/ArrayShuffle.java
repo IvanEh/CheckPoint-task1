@@ -5,7 +5,8 @@ import java.util.Random;
 import java.util.Vector;
 
 public class ArrayShuffle {
-	public static Random random = new Random();
+	public static Random random = new Random(1);
+	public static double avgOverload = 1;
 	
 
 	public static void shuffleQuarter(Vector<Vector<Integer>> arr){
@@ -17,7 +18,7 @@ public class ArrayShuffle {
 		int totalCount = arr.size()*rowSize;
 		int quarter = totalCount >> 2; //  divide by two
 		
-		if(quarter == 1)
+		if(quarter <= 1)
 			return;
 		
 		int[] indicesToShuffle = new int[quarter];
@@ -26,11 +27,6 @@ public class ArrayShuffle {
 		
 		HashSet<Integer> hash = new HashSet<Integer>(totalCount/2);
 				// indices from 1..totalCount;
-							
-		
-//		int ind;
-//		int i = ind % rowSize;
-//		int j = (ind-1) / rowSize;
 		
 		int currentAdded = 0;
 		
@@ -52,9 +48,10 @@ public class ArrayShuffle {
 			
 			boolean success = false;
 			
-			if(i == quarter - 1){
-				int downgrade = random.nextInt(quarter);
-				i = i - downgrade;
+			if(i == quarter - 1 
+					&& shuffledIndices[i] == indicesToShuffle[i] ){
+				int downgrade = random.nextInt(quarter-1);
+				i =  downgrade;
 				continue;
 			}
 			
@@ -67,11 +64,14 @@ public class ArrayShuffle {
 					shuffledIndices[i] = shuffledIndices[randomIndex];
 					shuffledIndices[randomIndex] = t;
 				}
-				if(loop > totalCount)
-					System.out.println("loop");
 			}
-			
 		}
+		
+		if(quarter != 0){
+			 avgOverload += ((double) loop)/quarter;
+			 avgOverload/=2;
+		}
+
 		
 	
 		for(int i = 0; i < quarter; i++){

@@ -39,9 +39,9 @@ public class Test {
 		Random random = new Random(1);
 		Vector<Vector<Integer>> v1, v2;
 		for(int i = 0; i < 100; i++){
-			int m = random.nextInt(10);
-			int n = random.nextInt(10);
-			
+			int m = random.nextInt(100) + 1;
+			int n = random.nextInt(100) + 1;
+
 			v1 = new Vector<Vector<Integer>>();
 			ArrayReader.genArray(v1, m, n);
 			v2 = new Vector<Vector<Integer>>();
@@ -59,8 +59,8 @@ public class Test {
 				assertTrue(testResult);
 				return;
 			}
-			
 		}
+		System.out.println(ArrayShuffle.avgOverload);
 	}
 
 }
